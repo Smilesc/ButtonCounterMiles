@@ -1,5 +1,6 @@
 package com.example.button_counter_miles;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,50 +11,76 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button increment;
-    private Button decrement;
-//    private Button reset;
     private TextView counter;
-    private int count;
+    public static int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        increment = this.findViewById(R.id.increment);
-      decrement = this.findViewById(R.id.decrement);
-//        this.reset = this.findViewById(R.id.reset);
+        Button increment = this.findViewById(R.id.increment);
+        Button decrement = this.findViewById(R.id.decrement);
+        Button reset = this.findViewById(R.id.reset);
         counter = this.findViewById(R.id.counter);
 
-        count = 0;
+        Bundle storedData = getIntent().getExtras();
 
+        if (storedData != null) {
+            count = storedData.getInt("com.example.button_counter_miles.count");
+        } else {
+            count = 0;
+        }
+
+        counter.setText(String.format(Locale.US, "%d", count));
+
+        //Increment 1
+        increment.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                counter.setText(String.format(Locale.US, "%d", ++count));
+            }
+        });
+
+        //Increment 10
         increment.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View v) {
-                counter.setText(String.format(Locale.US,"%d", count+=10));
+                counter.setText(String.format(Locale.US, "%d", count += 10));
                 return true;
             }
         });
 
+
+        //Decrement 1
+        decrement.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                counter.setText(String.format(Locale.US, "%d", --count));
+            }
+        });
+
+        //Decrement 10
         decrement.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View v) {
-                counter.setText(String.format(Locale.US,"%d", count-=10));
+                counter.setText(String.format(Locale.US, "%d", count -= 10));
                 return true;
             }
         });
 
+
+        //Reset
+        reset.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                count = 0;
+                counter.setText(String.format(Locale.US, "%d", count));
+            }
+        });
     }
 
-    public void incrementOnClick(View view){
-        counter.setText(String.format(Locale.US,"%d", ++count));
-    }
+    protected void onDestroy() {
 
-    public void decrementOnClick(View view){
-        counter.setText(String.format(Locale.US,"%d", --count));
-    }
+        super.onDestroy();
 
-    public void resetOnClick(View view){
-        count = 0;
-        counter.setText(String.format(Locale.US,"%d", count));
+        Intent passData = new Intent(this, MainActivity.class);
+        passData.putExtra("com.example.button_counter_miles.count", count);
+        startActivity(passData);
     }
 }

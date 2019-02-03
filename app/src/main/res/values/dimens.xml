@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="large_text">35sp</dimen>
+
+    <!--Portrait-->
+    <dimen name="upper_margin">36dp</dimen>
+
+        <!--Increment-->
+        <dimen name="increment_margin">55dp</dimen>
+        <dimen name="increment_margin_bot">17dp</dimen>
+
+        <!--Decrement-->
+        <dimen name="decrement_margin">64dp</dimen>
+        <dimen name="decrement_margin_top">37dp</dimen>
+
+        <!--Reset-->
+        <dimen name="reset_height">40dp</dimen>
+        <dimen name="reset_margin_top">17dp</dimen>
+
+
+    <!--Landscape-->
+    <dimen name="land_upper_margin">76dp</dimen>
+
+        <!--Counter-->
+        <dimen name="land_counter_margin_left">108dp</dimen>
+
+        <!--Increment-->
+        <dimen name="land_increment_margin">120dp</dimen>
+
+        <!--Decrement-->
+        <dimen name="land_decrement_margin">240dp</dimen>
+        <dimen name="land_decrement_margin_bot">16dp</dimen>
+
+        <!--Reset-->
+        <dimen name="land_reset_margin_start">78dp</dimen>
+        <dimen name="land_reset_margin_top">17dp</dimen>
+        <dimen name="land_reset_margin_end">77dp</dimen>
+
+</resources>

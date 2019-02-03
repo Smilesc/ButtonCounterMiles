@@ -1,0 +1,59 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/increment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/land_increment_margin"
+        android:layout_marginLeft="@dimen/land_increment_margin"
+        android:layout_marginTop="44dp"
+        android:text="@string/increment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/counter" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/land_counter_margin_left"
+        android:layout_marginLeft="@dimen/land_counter_margin_left"
+        android:layout_marginTop="@dimen/land_upper_margin"
+        android:text="@string/counter_text"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/large_text"
+        app:layout_constraintStart_toEndOf="@+id/increment"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/decrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/land_decrement_margin"
+        android:layout_marginLeft="@dimen/land_decrement_margin"
+        android:layout_marginBottom="@dimen/land_decrement_margin_bot"
+        android:text="@string/decrement"
+        app:layout_constraintBottom_toTopOf="@+id/reset"
+        app:layout_constraintStart_toEndOf="@+id/increment" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/reset_height"
+        android:layout_marginStart="@dimen/land_reset_margin_start"
+        android:layout_marginLeft="@dimen/land_reset_margin_start"
+        android:layout_marginTop="@dimen/land_reset_margin_top"
+        android:layout_marginEnd="@dimen/land_reset_margin_end"
+        android:layout_marginRight="@dimen/land_reset_margin_end"
+        android:longClickable="true"
+        android:text="@string/reset"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@+id/decrement"
+        app:layout_constraintStart_toStartOf="@+id/increment"
+        app:layout_constraintTop_toBottomOf="@+id/increment" />
+
+</android.support.constraint.ConstraintLayout>
